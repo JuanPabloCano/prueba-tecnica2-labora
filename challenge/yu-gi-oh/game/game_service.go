@@ -92,7 +92,6 @@ func options() {
 		fmt.Println(chalk.Yellow, "Select an option")
 		fmt.Println(chalk.White, "1. Duel ground")
 		fmt.Println(chalk.White, "2. Card shop")
-		fmt.Println(chalk.White, "3. Pharaoh's palace")
 		fmt.Println(chalk.White, "0. Exit")
 		scanner.Scan()
 		selection := scanner.Text()
@@ -110,8 +109,6 @@ func options() {
 			duel.Start(humanPlayer, aiPlayer)
 		case 2:
 			card.DisplayAll()
-		case 3:
-			fmt.Println("Shows the pharaohs palace")
 		case 0:
 			common.ClearScreen()
 			fmt.Println("See you soon")
