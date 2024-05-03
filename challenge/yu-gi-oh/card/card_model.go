@@ -12,3 +12,7 @@ type Card struct {
 	Race        string `json:"race"`
 	Attribute   string `json:"attribute"`
 }
+
+func (c *Card) IncrementAtk(amount int) {
+	c.Atk += amount
+}

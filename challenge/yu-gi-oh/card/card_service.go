@@ -1,6 +1,7 @@
 package card
 
 import (
+	"ejercicio-poo/challenge/yu-gi-oh/common"
 	"github.com/olekukonko/tablewriter"
 	"math/rand"
 	"os"
@@ -66,4 +67,17 @@ func DisplayAll() {
 			tablewriter.Bold, tablewriter.FgHiYellowColor})
 	table.SetRowLine(true)
 	table.Render()
+}
+
+func GetRandomCard() *Card {
+	cards, err := getAll()
+	if err != nil {
+		panic(err)
+	}
+	for {
+		selectedCard := common.GetRandomObject(cards)
+		if selectedCard.FrameType != "spell" && selectedCard.FrameType != "trap" {
+			return &selectedCard
+		}
+	}
 }

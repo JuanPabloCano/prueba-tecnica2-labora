@@ -5,7 +5,7 @@ import (
 	"ejercicio-poo/challenge/yu-gi-oh/card"
 	"ejercicio-poo/challenge/yu-gi-oh/common"
 	"ejercicio-poo/challenge/yu-gi-oh/common/constants"
-	"ejercicio-poo/challenge/yu-gi-oh/user"
+	"ejercicio-poo/challenge/yu-gi-oh/player"
 	"fmt"
 	"github.com/ttacon/chalk"
 	"os"
@@ -35,7 +35,7 @@ func Start() {
 			common.Sleep(constants.TwoSeconds)
 			fmt.Println(chalk.White, "Your duelist code has been recorded.")
 			common.Sleep(constants.ThreeSeconds)
-			user.CreateUser(username)
+			player.CreatePlayer(username)
 			prologueConversation()
 			common.Sleep(constants.FourSeconds)
 			options()
@@ -102,6 +102,7 @@ func options() {
 
 		switch choice {
 		case 1:
+			player.CreatePlayer("COMP")
 			fmt.Println("Starts the duel")
 		case 2:
 			card.DisplayAll()
