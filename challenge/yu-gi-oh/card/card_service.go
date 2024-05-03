@@ -2,6 +2,7 @@ package card
 
 import (
 	"github.com/olekukonko/tablewriter"
+	"math/rand"
 	"os"
 	"strconv"
 )
@@ -14,7 +15,12 @@ func getAll() ([]Card, error) {
 		}
 		storage = cards
 	}
-	return storage, nil
+	tempCards := make([]Card, len(storage))
+	copy(tempCards, storage)
+	rand.Shuffle(len(tempCards), func(i, j int) {
+		tempCards[i], tempCards[j] = tempCards[j], tempCards[i]
+	})
+	return tempCards[:15], nil
 }
 
 func DisplayAll() {
