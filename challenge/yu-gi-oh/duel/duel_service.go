@@ -10,7 +10,7 @@ import (
 	"fmt"
 )
 
-func compareCards(playerCard, opponentCard *card.Card) string {
+func CompareCards(playerCard, opponentCard *card.Card) string {
 	if playerCard.Atk > opponentCard.Atk {
 		return "player"
 	} else if opponentCard.Atk > playerCard.Atk {
@@ -53,7 +53,7 @@ func Start(player *player.Player, opponent *player.Player) {
 		common.Sleep(constants.ThreeSeconds)
 		fmt.Printf("Opponent's card: %s with %d attack (after bonus)\n", opponent.Card.Name, opponent.Card.Atk)
 
-		winner := compareCards(player.Card, opponent.Card)
+		winner := CompareCards(player.Card, opponent.Card)
 		if winner != "draw" {
 			announceResult(winner, player.Card, opponent.Card)
 			common.Sleep(constants.FiveSeconds)
