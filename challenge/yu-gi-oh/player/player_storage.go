@@ -1,5 +1,5 @@
 package player
 
 var (
-	Players []string
+	Players []*Player
 )

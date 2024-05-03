@@ -5,6 +5,7 @@ import (
 	"ejercicio-poo/challenge/yu-gi-oh/card"
 	"ejercicio-poo/challenge/yu-gi-oh/common"
 	"ejercicio-poo/challenge/yu-gi-oh/common/constants"
+	"ejercicio-poo/challenge/yu-gi-oh/duel"
 	"ejercicio-poo/challenge/yu-gi-oh/player"
 	"fmt"
 	"github.com/ttacon/chalk"
@@ -87,6 +88,7 @@ func options() {
 	scanner := bufio.NewScanner(os.Stdin)
 
 	for {
+		//common.ClearScreen()
 		fmt.Println(chalk.Yellow, "Select an option")
 		fmt.Println(chalk.White, "1. Duel ground")
 		fmt.Println(chalk.White, "2. Card shop")
@@ -102,8 +104,10 @@ func options() {
 
 		switch choice {
 		case 1:
-			player.CreatePlayer("COMP")
-			fmt.Println("Starts the duel")
+			humanPlayer := player.GetHumanPlayer()
+			aiPlayer := player.CreatePlayer("COMP")
+			aiPlayer.IsAI = true
+			duel.Start(humanPlayer, aiPlayer)
 		case 2:
 			card.DisplayAll()
 		case 3:
