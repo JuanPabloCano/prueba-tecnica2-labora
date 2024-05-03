@@ -8,9 +8,13 @@ import (
 	"strconv"
 )
 
+const (
+	url = "https://db.ygoprodeck.com/api/v7/cardinfo.php?&startdate=2000-01-01&enddate=2002-08-23&dateregion=tcg"
+)
+
 func getAll() ([]Card, error) {
 	if len(storage) == 0 {
-		cards, err := FetchYuGiOhCards("https://db.ygoprodeck.com/api/v7/cardinfo.php?&startdate=2000-01-01&enddate=2002-08-23&dateregion=tcg")
+		cards, err := FetchYuGiOhCards(url)
 		if err != nil {
 			return nil, err
 		}
